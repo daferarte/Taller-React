@@ -10,7 +10,7 @@ const nombres = [
 
 const Nombres = () => {
   return <ul>{
-    nombres.map( nombre => <li>{nombre}</li>) //iteracion de arreglos con map
+    nombres.map( (nombre, index) => <li key={index}>{nombre}</li>) //iteracion de arreglos con map
   }</ul> 
 }
 
