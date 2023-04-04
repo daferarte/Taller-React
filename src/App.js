@@ -8,17 +8,10 @@ const nombres = [
   'Cody'
 ]
 
-function getNombres(){
-  const elementosLista = [];
-  for(var i =0; i< nombres.length;i++){
-    elementosLista.push(<li>{nombres[i]}</li>);
-  }
-  console.log(elementosLista); //arreglo objetos
-  return elementosLista;
-}
-
 const Nombres = () => {
-  return <ul>{ getNombres() }</ul> //imprime la lista jsx
+  return <ul>{
+    nombres.map( nombre => <li>{nombre}</li>) //iteracion de arreglos con map
+  }</ul> 
 }
 
 export default function App() {
