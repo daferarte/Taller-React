@@ -19,3 +19,33 @@ A través de esta arquitectura, aplicamos el principio de “divide y vencerás�
 Los componentes más complejos como un calendario, un slider, un formulario, etc. Se componen de pequeños componentes de tareas específicas, más adelante hablaremos de forma en como podemos separar nuestros componentes para hacerlos más simples y reutilizables.
 
 En React, un componente se puede definir con una función, a éstos los llamamos componentes funcionales, y con una clase, a éstos los llamamos componentes de clase. Sin importar qué tipo de componente escribas, éstos reciben información del exterior y retornan un grupo de elementos de React que después se verán en la pantalla.
+
+# Props
+
+Como menciona la documentación de React:
+
+Conceptualmente, los componentes son como las funciones de JavaScript. Aceptan datos de entrada (llamados props) y returnan elementos de React que describen lo que debería aparecer en la pantalla.
+
+Las props son la colección de datos que un componente recibe del contenedor padre, y que pueden usarse para definir los elementos de React que retornará el componente.
+
+En términos prácticos, si un componente necesita recibir información para funcionar, la recibe vía props.
+
+En términos técnicos, las props tienen ciertas características:
+
+Son inmutables, que es el adjetivo para lo que no se puede modificar o cambiar. Una prop no se modifica.
+Pueden tener un valor por defecto
+Pueden marcarse como obligatorias, cuando un componenente no puede funcionar sin recibir una prop.
+En JSX, las props se ven como los atributos de los elementos HTML:
+
+<Btn value=”Enviar” />
+Estas props pueden recibir un string o el resultado de una expresión de JavaScript, usando la sintaxis de llaves:
+
+<Saludo value={` Hola ${nombre} `} />
+
+En componentes funcionales, las props se reciben como argumentos de la función. En clases se pueden leer vía la propiedad props del objeto:
+
+const Btn = (props)=>{ return null; }
+
+class Btn extends React.Component{
+  render(){ console.log(this.props); return null; }
+}
