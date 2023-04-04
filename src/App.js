@@ -1,28 +1,30 @@
 import React from 'react';
 import './style.css';
 
+const nombres = [
+  'daniel',
+  'Eduardo',
+  'Marines',
+  'Cody'
+]
 
-const Saludo = () => {
-  const nombre = "Daniel";
-  const idioma = "en";
+function getNombres(){
+  const elementosLista = [];
+  for(var i =0; i< nombres.length;i++){
+    elementosLista.push(<li>{nombres[i]}</li>);
+  }
+  console.log(elementosLista); //arreglo objetos
+  return elementosLista;
+}
 
-  return (
-    <div>
-      {
-        idioma === "es" ? <p>Hola</p> : <p>Hello</p>
-      }
-      
-    </div>
-  );
-};
+const Nombres = () => {
+  return <ul>{ getNombres() }</ul> //imprime la lista jsx
+}
 
 export default function App() {
   return (
     <div>
-      <h1>
-        {' '}
-        <Saludo />
-      </h1>
+      <Nombres />
     </div>
   );
 }
