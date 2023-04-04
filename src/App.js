@@ -17,6 +17,15 @@ const Saludar = ({nombre, idioma}) => {
   return <p>{saludo} {nombre} </p>
 }
 
+/**
+ * Saludar.defaultProps
+ * sirve para definir valores por defecto en un props 
+ * esta definicion se hace despues de definir el props
+ */
+Saludar.defaultProps = {
+  idioma:'en'
+}
+
 export default function App() {
   return (
     <div>
