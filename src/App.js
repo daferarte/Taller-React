@@ -1,17 +1,21 @@
 import React from 'react';
 import './style.css';
 
-function SaludarEnIdiomas({idioma}){
-  if(idioma === "es") {
-    return <span>Hola</span>;
-  }else{
-    return <span>Hello</span>;
-  }
-}
 
 const Saludo = () => {
   const nombre = "Daniel";
-  return <p><SaludarEnIdiomas idioma={"en"}/> { `${nombre}` } </p>;
+  const idioma = "en";
+
+  return (
+    <div>
+      {
+        idioma === "es" && <p>Hola</p>
+      }
+      {
+        idioma === "en" && <p>Hello</p>
+      }
+    </div>
+  );
 };
 
 export default function App() {
