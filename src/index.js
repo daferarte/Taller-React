@@ -10,7 +10,11 @@ const root = createRoot(rootElement);
 
 class App extends Component{ //componente en clase
   
-  render(){ //metodo render que retorna el componente
+  /**
+   * metodo render que retorna el componente, cada vez que guarda se ejecuta o encuentra un cambio
+   * React hace lo menos posible para actualizar la interfaz
+   */
+  render(){ 
     return <h1>Hola mundo</h1>
   }
 }
