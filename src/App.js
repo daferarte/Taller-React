@@ -9,11 +9,9 @@ const Saludo = () => {
   return (
     <div>
       {
-        idioma === "es" && <p>Hola</p>
+        idioma === "es" ? <p>Hola</p> : <p>Hello</p>
       }
-      {
-        idioma === "en" && <p>Hello</p>
-      }
+      
     </div>
   );
 };
