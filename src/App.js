@@ -12,19 +12,11 @@ import './style.css';
 // }
 
 //multiples variables
-const Saludar = ({nombre, idioma}) => {
+const Saludar = ({nombre, idioma = 'es'}) => { //definicion por defecto usando javascript recomendado
   const saludo = idioma === "es" ? "'Hola":"Hello";
   return <p>{saludo} {nombre} </p>
 }
 
-/**
- * Saludar.defaultProps
- * sirve para definir valores por defecto en un props 
- * esta definicion se hace despues de definir el props
- */
-Saludar.defaultProps = {
-  idioma:'en'
-}
 
 export default function App() {
   return (
