@@ -1,19 +1,27 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './style.css';
 
 //formularios
 
-//Enviando formularios
+//Manipulacion del DOM directamente
 
 // usar JSONPlaceholder
 
 
 
 //Formulario
-const Form = () =>{
+const Form = ({showed}) =>{
   //useState se usa para optener el valor de las variables
   let [title,setTitle] = useState("");
   let [body,setBody] = useState("");
+
+  const firstInput = useRef(); //recibe el primer objeto del DOM para asignarlo
+
+  useEffect(()=>{
+    //actualiar el DOM
+    // console.log(firstInput); //muestra el elemento que se ha guardado
+    firstInput.current.focus();
+  },[showed])
 
   const sendForm = (ev)=>{
     ev.preventDefault() // previene el cargue tradicional del formulario
@@ -45,7 +53,7 @@ const Form = () =>{
     <form onSubmit={(ev)=> sendForm(ev)}> 
       <div>
         <label htmlFor="title">Titulo</label>
-        <input type='text' value={title} id='title' onChange={ (evt)=> setTitle(evt.target.value)}></input>
+        <input type='text' value={title} id='title' onChange={ (evt)=> setTitle(evt.target.value)} ref={firstInput}></input>
       </div>
       <div>
         <label htmlFor="body">Publicacion</label>
@@ -58,13 +66,27 @@ const Form = () =>{
   )
 }
 
-
+/**
+ * Metodo para mostrar el formulario
+ * @returns retorna el formulario
+ */
+const Accordion = () =>{
+  const [show,setShow] = useState(false);
+  return (
+    <div>
+      {/* muestra el formulario */}
+      <button onClick={ ()=>setShow(true)}>Mostrar form</button> 
+      {show && <Form showed={show} />}
+    </div>
+  )
+}
 
 
 export default function App() {
   return (
     <div>
-      <Form />
+      
+      <Accordion />
     </div>
   );
 }
