@@ -1,30 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './style.css';
 
-//metodo sin desestructuracion
-// const Saludar = (props) => {
-//   return <p>Hola {props.nombre} </p>
-// }
+//contador de clicks en pantalla con state
+//recuerda qeu react busca actualizar el codigo necesario
 
-//metodo con desestructuracion
-// const Saludar = ({nombre}) => {
-//   return <p>Hola {nombre} </p>
-// }
-
-//multiples variables
-const Saludar = ({nombre, idioma = 'es'}) => { //definicion por defecto usando javascript recomendado
-  const saludo = idioma === "es" ? "'Hola":"Hello";
-  return <p>{saludo} {nombre} </p>
+const Button = () => {
+  // variable de stado que tiene el valor y la funcion para actualizar
+  const [conteo, actConteo] = useState(0); //hook
+  return(
+    <div>
+      <p> Precionado: {conteo}</p>
+      {/* boton que llama al state para actualizarse con cada clic */}
+      <button onClick={()=> actConteo(conteo+1)}>Clic me!</button> 
+    </div>
+  )
 }
 
 
 export default function App() {
   return (
     <div>
-      {/* una variable */}
-      {/* <Saludar nombre='Daniel' /> */}
-      {/* multiples variales */}
-      <Saludar nombre='Daniel' idioma='es' />
+      <Button />
     </div>
   );
 }
