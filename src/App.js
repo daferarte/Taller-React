@@ -32,7 +32,12 @@ const Form = () =>{
       },
     })
       .then((response) => response.json()) //respuesta
-      .then((json) => console.log(json));
+      .then((json) => 
+      {
+        setTitle("");
+        setBody("");
+        console.log(json);
+      });
   }
 
   return (
@@ -40,11 +45,11 @@ const Form = () =>{
     <form onSubmit={(ev)=> sendForm(ev)}> 
       <div>
         <label htmlFor="title">Titulo</label>
-        <input type='text' id='title' onChange={ (evt)=> setTitle(evt.target.value)}></input>
+        <input type='text' value={title} id='title' onChange={ (evt)=> setTitle(evt.target.value)}></input>
       </div>
       <div>
         <label htmlFor="body">Publicacion</label>
-        <textarea id='body' onChange={ (evt)=> setBody(evt.target.value)}></textarea>
+        <textarea id='body' value={body} onChange={ (evt)=> setBody(evt.target.value)}></textarea>
       </div>
       {/* no romper html creando funciones innecesarios html ya las hace */}
       {/* <input onClick={()=>{ /*enviar formulario }} />  */}
