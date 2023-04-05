@@ -13,10 +13,15 @@ const Button = () => {
    * en cada render se puede definir cambios
    */
   useEffect(()=>{
-    console.log("me ejecuto"); // se ejecuta con cada actualizacion
-  },[]); //solo se ejecuta al iniciar el componente
+    console.log("me ejecuto");
+    //ejecuta al finalizar el componente
+    return ()=>{
+      console.log("adios");
+    }
+  },[]); 
   return(
     <div>
+       
       <button onClick={()=>setCount(count+1)}>Enviar!</button> 
     </div>
   )
@@ -24,9 +29,12 @@ const Button = () => {
 
 
 export default function App() {
+  const [showButton, setShowButton] = useState(true)
   return (
     <div>
-      <Button />
+      <button onClick={()=>setShowButton(false)}>Eliminar</button>
+      <div>{showButton && <Button />}</div>
     </div>
   );
 }
+
