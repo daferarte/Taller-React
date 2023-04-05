@@ -14,7 +14,7 @@ const Button = () => {
    */
   useEffect(()=>{
     console.log("me ejecuto"); // se ejecuta con cada actualizacion
-  })
+  },[]); //solo se ejecuta al iniciar el componente
   return(
     <div>
       <button onClick={()=>setCount(count+1)}>Enviar!</button> 
