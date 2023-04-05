@@ -1,39 +1,26 @@
 import React, {useEffect, useState} from 'react';
 import './style.css';
 
-//ciclo de vida del componente 
+//eventos
 
-
-
-const Button = () => {
-  // aqui no deben haber efectos secundarios
-  const [count, setCount] = useState(0);
-  /**
-   * useEffect recibe un cambio cada vez que se actualize una variable
-   * en cada render se puede definir cambios
-   */
-  useEffect(()=>{
-    console.log("me ejecuto");
-    //ejecuta al finalizar el componente
-    return ()=>{
-      console.log("adios");
-    }
-  },[]); 
+const Saludo = () =>{
+  const [name, setName]=useState("")
   return(
     <div>
-       
-      <button onClick={()=>setCount(count+1)}>Enviar!</button> 
+      {/* syntheticEvent */}
+      {/* <input type='text' onChange={(ev)=>console.log(ev)}></input> */}
+      {/* enparejamiento de una funcion cuando se ejecuta con un evento */}
+      <input type='text' onChange={(ev)=>setName(ev.target.value)}></input> 
+      <p>hola {name}</p>
     </div>
   )
 }
 
 
 export default function App() {
-  const [showButton, setShowButton] = useState(true)
   return (
     <div>
-      <button onClick={()=>setShowButton(false)}>Eliminar</button>
-      <div>{showButton && <Button />}</div>
+      <Saludo />
     </div>
   );
 }
