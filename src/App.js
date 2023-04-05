@@ -1,17 +1,23 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './style.css';
 
-//contador de clicks en pantalla con state
-//recuerda qeu react busca actualizar el codigo necesario
+//ciclo de vida del componente 
+
+
 
 const Button = () => {
-  // variable de stado que tiene el valor y la funcion para actualizar
-  const [conteo, actConteo] = useState(0); //hook
+  // aqui no deben haber efectos secundarios
+  const [count, setCount] = useState(0);
+  /**
+   * useEffect recibe un cambio cada vez que se actualize una variable
+   * en cada render se puede definir cambios
+   */
+  useEffect(()=>{
+    console.log("me ejecuto"); // se ejecuta con cada actualizacion
+  })
   return(
     <div>
-      <p> Precionado: {conteo}</p>
-      {/* boton que llama al state para actualizarse con cada clic */}
-      <button onClick={()=> actConteo(conteo+1)}>Clic me!</button> 
+      <button onClick={()=>setCount(count+1)}>Enviar!</button> 
     </div>
   )
 }
