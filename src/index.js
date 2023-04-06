@@ -18,6 +18,22 @@ class App extends React.Component{
       contador:0
     }
   }
+
+  /**
+   * Error en el contexto que usa this
+   * @returns evento de conteo
+   */
+  // updateCounter(){
+  //   this.setState({contador: this.state.contador+1})
+  // }
+
+  /**
+   * al usar metodo de flechas se mejora el contexto
+   */
+  updateCounter = ()=>{
+    this.setState({contador: this.state.contador+1})
+  }
+
   render(){
     console.log(this.props); //props de solo lectura no se pueden reaccionar
     return (
@@ -25,7 +41,7 @@ class App extends React.Component{
       <> 
         <p>
           Contador: {this.state.contador}
-          <button onClick={()=>this.setState({contador: this.state.contador+1})}>Sumar</button>
+          <button onClick={this.updateCounter}>Sumar</button>
         </p>
       </>
     )
