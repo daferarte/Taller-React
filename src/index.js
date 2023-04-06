@@ -1,14 +1,10 @@
-import React, { StrictMode, Component } from 'react'; //cada componente que se usa en react debe importar la libreria react
-import { createRoot } from 'react-dom/client';
+import React from 'react';
+import { render } from 'react-dom';
 
-import App from './App';
+class App extends React.Component{
+  render(){
+    return <p>Hola</p>
+  }
+}
 
-const rootElement = document.getElementById('root');
-const root = createRoot(rootElement);
-
-
-root.render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
+render(<App />, document.getElementById('root'));
