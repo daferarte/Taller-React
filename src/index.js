@@ -15,15 +15,46 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.state ={ //modificacion del estado del componente
-      contador:0
+      contador:0,
+      updateAt: null
     }
 
-    //asigna un valor al contexto para que no se modifique
-    this.updateCounter = this.updateCounter.bind(this); // otra manera de manejar el contexto
   }
 
+  //metodo se ejecuta cuando se inicia el componente
+  componentDidMount(){
+    console.log("fui creado");
+  }
+
+  /**
+   * metodo se ejecuta cuando se actualiza el componente
+   * @param {*} prevProps guarda los props anteriores
+   * @param {*} prevState guarda los cambios en los estados
+   */
+  componentDidUpdate(prevProps, prevState, snapshot){
+    console.log(prevState, this.state, snapshot);
+    if(prevState.contador !== this.state.contador)
+      this.setState({updateAt: new Date()})
+    console.log("fui actualizado");
+  }
+
+  /**
+   * se ejecuta antes de actualizar el DOM
+   */
+  getSnapshotBeforeUpdate(){
+    console.log("Antes del DOM");
+    return 3; //esto retorna y se convierte en tercer argumento pra el didupdate
+  }
+
+  /**
+   * se ejecuta cuando el componente se va a ir
+   * se usa para limpiar cosas
+   */
+  componentWillMount(){
+    alert("bye");
+  }
   
-  updateCounter(){
+  updateCounter=()=>{
     this.setState({contador: this.state.contador+1})
   }
 
