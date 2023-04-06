@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './style.css';
 import Button from './Button';
+import Card from './Card';
 
 // react context
 //Actualizar el contexto
@@ -27,6 +28,7 @@ export default function App() {
       {/* con el provider se pasa el contexto que se requiere */}
       <ThemeContext.Provider value={theme}> 
         <Button/>
+        <Card/>
         <button onClick={()=>setTheme(themes.light)}>Modo Claro</button>
         <button onClick={()=>setTheme(themes.dark)}>Modo Oscuro</button>
       </ThemeContext.Provider>
