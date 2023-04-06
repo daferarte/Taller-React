@@ -10,9 +10,25 @@ class App extends React.Component{
   static propTypes ={ //sirve para definir el tipo de datos que puede tener un prop
     name: PropTypes.string
   }
+
+  //reescritura del metodo constructor
+  constructor(props){
+    super(props);
+    this.state ={ //modificacion del estado del componente
+      contador:0
+    }
+  }
   render(){
     console.log(this.props); //props de solo lectura no se pueden reaccionar
-    return <p>Hola</p>
+    return (
+      // tag vacio sirve para agrupar componentes
+      <> 
+        <p>
+          Contador: {this.state.contador}
+          <button onClick={()=>this.setState({contador: this.state.contador+1})}>Sumar</button>
+        </p>
+      </>
+    )
   }
 }
 
