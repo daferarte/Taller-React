@@ -17,20 +17,13 @@ class App extends React.Component{
     this.state ={ //modificacion del estado del componente
       contador:0
     }
+
+    //asigna un valor al contexto para que no se modifique
+    this.updateCounter = this.updateCounter.bind(this); // otra manera de manejar el contexto
   }
 
-  /**
-   * Error en el contexto que usa this
-   * @returns evento de conteo
-   */
-  // updateCounter(){
-  //   this.setState({contador: this.state.contador+1})
-  // }
-
-  /**
-   * al usar metodo de flechas se mejora el contexto
-   */
-  updateCounter = ()=>{
+  
+  updateCounter(){
     this.setState({contador: this.state.contador+1})
   }
 
