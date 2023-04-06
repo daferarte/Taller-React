@@ -1,31 +1,32 @@
-import React, {Suspense, useEffect, useRef, useState} from 'react';
+import React from 'react';
 import './style.css';
-// import Surprise from './Surprise'; //cargue nativo de los import
+import Button from './Button';
 
-//React lazy y suspense
+// react context
+//Prop-drilling
 
-// para utilizar el lazy se realiza lo siguiente
-
-const Surprise = React.lazy(()=>import('./Surprise')); //carga el componente ondemand
+const themes ={
+  'dark':{
+    backgroundColor: 'black',
+    color: 'white'
+  },
+  'light':{
+    backgroundColor: 'white',
+    color: 'black'
+  }
+}
+export const ThemeContext = React.createContext();
 
 
 export default function App() {
-  const [showSurprise, setShowSurprise] = useState(false);
-
   
   return (
     <div>
-      <Suspense fallback={<p>Cargando ...</p>}>
-      <button onClick={ (evt) => setShowSurprise(true)}>Mostrar solpresa</button>
-      {
-        // Suspense // es un componente que permite esperar la carga de un componente
-        // todos los componentes en lazy se deben agregar en un suspense y el fallback sirve para 
-        // mostrar mensaje de cargando
-        // showSurprise && <Suspense fallback={<p>Cargando ...</p>}> <Surprise/></Suspense>
-        //tambien el suspense se puede agregar en todo el metodo
-        showSurprise && <Surprise/>
-      }
-      </Suspense>
+      {/* con el provider se pasa el contexto que se requiere */}
+      <ThemeContext.Provider value={themes.dark}> 
+        <Button/>
+      </ThemeContext.Provider>
+      
     </div>
   );
 }
