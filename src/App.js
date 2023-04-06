@@ -1,11 +1,13 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {Suspense, useEffect, useRef, useState} from 'react';
 import './style.css';
-import Surprise from './Surprise';
+// import Surprise from './Surprise'; //cargue nativo de los import
 
-//Splitting
+//React lazy y suspense
 
-//la mejor manera de usar contenidos dinamicos es importarlos desde react con una funcion que retorne
-//una promesa hasta que termina de ejecutarse este codigo
+// para utilizar el lazy se realiza lo siguiente
+
+const Surprise = React.lazy(()=>import('./Surprise')); //carga el componente ondemand
+
 
 export default function App() {
   const [showSurprise, setShowSurprise] = useState(false);
@@ -13,10 +15,17 @@ export default function App() {
   
   return (
     <div>
+      <Suspense fallback={<p>Cargando ...</p>}>
       <button onClick={ (evt) => setShowSurprise(true)}>Mostrar solpresa</button>
       {
+        // Suspense // es un componente que permite esperar la carga de un componente
+        // todos los componentes en lazy se deben agregar en un suspense y el fallback sirve para 
+        // mostrar mensaje de cargando
+        // showSurprise && <Suspense fallback={<p>Cargando ...</p>}> <Surprise/></Suspense>
+        //tambien el suspense se puede agregar en todo el metodo
         showSurprise && <Surprise/>
       }
+      </Suspense>
     </div>
   );
 }
