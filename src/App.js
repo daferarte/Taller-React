@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.css';
 import Button from './Button';
 
 // react context
-//Prop-drilling
+//Actualizar el contexto
 
 const themes ={
   'dark':{
@@ -20,11 +20,15 @@ export const ThemeContext = React.createContext();
 
 export default function App() {
   
+  //use state para cambiar el componente
+  const [theme, setTheme ] = useState(themes.dark);
   return (
     <div>
       {/* con el provider se pasa el contexto que se requiere */}
-      <ThemeContext.Provider value={themes.dark}> 
+      <ThemeContext.Provider value={theme}> 
         <Button/>
+        <button onClick={()=>setTheme(themes.light)}>Modo Claro</button>
+        <button onClick={()=>setTheme(themes.dark)}>Modo Oscuro</button>
       </ThemeContext.Provider>
       
     </div>
